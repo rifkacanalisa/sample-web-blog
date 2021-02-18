@@ -26,7 +26,7 @@
                 endif;
                 ?>
                 <div class="col-md-4 <?= $warna; ?> mb-3">
-                    <div class="card-header"><?= $p['idol']; ?></div>
+                    <div class="card-header">from: <?= $p['idol']; ?></div>
                     <div class="card-body">
                         <h5 class="card-title"><?= $p['judul']; ?></h5>
                         <p class="card-text"><?= $p['isi']; ?></p>
