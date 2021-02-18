@@ -73,14 +73,22 @@ class Post extends CI_Controller
         if ($this->session->userdata('keyword') == false) {
             $this->session->set_userdata('keyword', '');
         }
-        if (logged_in()) :
-            $id = $this->session->userdata('id_user');
-            $data['posts'] = $this->Post_model
-                ->getPostsWriter($config['per_page'], $data['start'], $data['keyword'], $id);
-        else :
-            $data['posts'] = $this->Post_model
-                ->getPublicPost($config['per_page'], $data['start'], $data['keyword']);
-        endif;
+
+        if (logged_in()) {
+            $parameter = 'id_writer';
+            $isi = $this->session->userdata('id_user');
+            #$data['posts'] = $this->Post_model
+              #  ->getPostsWriter($config['per_page'], $data['start'], $data['keyword'], $id);
+        }
+        else {
+            $parameter = 'status';
+            $isi = 'public';
+           # $data['posts'] = $this->Post_model
+            #    ->getPublicPost($config['per_page'], $data['start'], $data['keyword']);
+        }
+
+        $data['posts'] = $this->Post_model
+        ->getPostsWriter($config['per_page'], $data['start'], $data['keyword'], $parameter, $isi);
 
         $this->load->view('templates/header', $data);
         $this->load->view('post/index', $data);
