@@ -26,10 +26,12 @@
                 }
                 ?>
                 <small class="align-right">Status : <?= $post['status']; ?> </small>
-                <small class="align-right">Showing : <?= $show; ?> </small>
-                <small class="align-right">by : <?= $post['name']; ?> </small>
                 <br>
+                <small class="align-right">Showing : <?= $show; ?> </small>
+                <br>
+                
             <?php endif; ?>
+            <br>
             <a href="<?= base_url(); ?>post" class="btn btn-secondary">Kembali</a>
             <hr>
         </div>
