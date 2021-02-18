@@ -73,7 +73,9 @@ class Post extends CI_Controller
         if ($this->session->userdata('keyword') == false) {
             $this->session->set_userdata('keyword', '');
         }
+
         $id = $this->session->userdata('id_user');
+        
         $data['posts'] = $this->Post_model
         ->getPostsWriter($config['per_page'], $data['start'], $data['keyword'], $id);
         

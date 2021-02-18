@@ -20,8 +20,10 @@
             <p class=""
                 style="-webkit-line-clamp:3; overflow:hidden; text-overflow:ellipsis; display: -webkit-box; -webkit-box-orient:vertical;">
                 <?= $p['isi']; ?></p>
-            <small><?= $p['idol']; ?></small>
-            <small class="align-right">by : <?= $p['id_writer']; ?> </small>
+            <small><?= $p['idol']; ?></small> 
+            <br>
+            <small class="align-right">by : <?= $p['name']; ?> </small>
+            <br>
             <a href="<?= base_url(); ?>post/artikel/<?= $p['id_post']; ?>" class="btn btn-primary">Lihat &raquo;</a>
             <a href="<?= base_url(); ?>post/update/<?= $p['id_post']; ?>" class="btn btn-success">Update</a>
             <a href="<?= base_url(); ?>post/hapus/<?= $p['id_post']; ?>" class="btn btn-danger"
