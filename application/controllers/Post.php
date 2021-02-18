@@ -88,7 +88,7 @@ class Post extends CI_Controller
         }
 
         $data['posts'] = $this->Post_model
-        ->getPostsWriter($config['per_page'], $data['start'], $data['keyword'], $parameter, $isi);
+        ->getPostsWriter($config['per_page'], $data['start'], $parameter, $isi, $data['keyword']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('post/index', $data);
