@@ -5,7 +5,11 @@ class Post_model extends CI_Model
     public function tambahPost(){
         $data = array(
             'judul' => $this->input->post('judul'),
-            'isi' => $this->input->post('isi')
+            'isi' => $this->input->post('isi'),
+            'status' => $this->input->post('status'),
+            'show' => $this->input->post('show'),
+            'id_writer' => $this->session->userdata('id'),
+            'idol' => $this->input->post('idol')
         );
         $this->db->insert('posts',$data);
     }
@@ -15,9 +19,10 @@ class Post_model extends CI_Model
         ->get('posts')
         ->result_array();
     }
-    public function getPosts($limit, $start, $keyword = null){
+    public function getPostsWriter($limit, $start, $keyword = null, $id){
         return $this->db
-        ->select("id_post, judul, SUBSTRING(isi, 1, 140) as isi")
+        ->select("id_post, judul, SUBSTRING(isi, 1, 140) as isi, status, show, id_writer, idol")
+        ->where('id_writer', $id)
         ->like('judul', $keyword)
         ->order_by('id_post','asc')
         ->get('posts', $limit, $start)
