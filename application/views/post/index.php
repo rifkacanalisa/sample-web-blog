@@ -26,21 +26,22 @@
                 endif;
                 ?>
                 <div class="col-md-4 <?= $warna; ?> mb-3">
-                    <h3 class="text-truncate"><?= $p['judul']; ?></h3>
-                    <p class="" style="-webkit-line-clamp:3; overflow:hidden; text-overflow:ellipsis; display: -webkit-box; -webkit-box-orient:vertical;">
-                        <?= $p['isi']; ?></p>
-                    <small>fandom : <?= $p['idol']; ?></small>
-                    <br>
-                    <?php if ($p['show'] == 'Y') : ?>
-                        <small class="align-right">by : <?= $p['name']; ?> </small>
-                    <?php endif; ?>
-                    <br>
-                    <a href="<?= base_url(); ?>post/artikel/<?= $p['id_post']; ?>" class="btn btn-primary">Lihat &raquo;</a>
-                    <?php if (logged_in()) : ?>
-                        <a href="<?= base_url(); ?>post/update/<?= $p['id_post']; ?>" class="btn btn-success">Update</a>
-                        <a href="<?= base_url(); ?>post/hapus/<?= $p['id_post']; ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus post tersebut?')">Hapus</a>
-                        <hr>
-                    <?php endif; ?>
+                    <div class="card-header"><?= $p['idol']; ?></div>
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $p['judul']; ?></h5>
+                        <p class="card-text"><?= $p['isi']; ?></p>
+                        <br>
+                        <?php if ($p['show'] == 'Y') : ?>
+                            <small class="align-right">by : <?= $p['name']; ?> </small>
+                        <?php endif; ?>
+                        <br>
+                        <a href="<?= base_url(); ?>post/artikel/<?= $p['id_post']; ?>" class="btn btn-secondary">Lihat &raquo;</a>
+                        <?php if (logged_in()) : ?>
+                            <a href="<?= base_url(); ?>post/update/<?= $p['id_post']; ?>" class="btn btn-success">Update</a>
+                            <a href="<?= base_url(); ?>post/hapus/<?= $p['id_post']; ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus post tersebut?')">Hapus</a>
+                            <hr>
+                        <?php endif; ?>
+                    </div>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
