@@ -19,8 +19,8 @@ class User_model extends CI_Model
          return $this->db->get_where('users', ['email' => $email])->row_array();
     }
 
-    public function getUserData($email){
-        return $this->db->where('email', $email)->get('users')->result_array();
+    public function getUserData($id){
+        return $this->db->where('id', $id)->get('users')->result_array();
     }
 
 

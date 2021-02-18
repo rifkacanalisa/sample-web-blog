@@ -76,7 +76,8 @@ class Post extends CI_Controller
         $data['posts'] = $this->Post_model
         ->getPosts($config['per_page'], $data['start'], $data['keyword']);
 
-        #$data['users'] = $this->User_model->getUserData($email);
+        $id = $this->session->userdata('id_user');
+        $data['users'] = $this->User_model->getUserData($id);
         
         $this->load->view('templates/header', $data);
         $this->load->view('post/index', $data);
