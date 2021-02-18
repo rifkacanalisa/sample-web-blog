@@ -1,8 +1,8 @@
 <div class="container">
     <?php if($this->session->flashdata('pesan')): ?>
     <div class="row">
-        <div class="col-md-4 alert-<?= $this->session->flashdata('alert');?> alert">Post 
-        <?= $this->session->flashdata('tipe');?><?= $this->session->flashdata('notif');?></div>
+        <div class="col-md-4 alert-<?= $this->session->flashdata('alert');?> alert">Post
+            <?= $this->session->flashdata('tipe');?><?= $this->session->flashdata('notif');?></div>
     </div>
     <?php endif; ?>
     <div class="row">
@@ -22,15 +22,19 @@
             <p class=""
                 style="-webkit-line-clamp:3; overflow:hidden; text-overflow:ellipsis; display: -webkit-box; -webkit-box-orient:vertical;">
                 <?= $p['isi']; ?></p>
-            <small>fandom : <?= $p['idol']; ?></small> 
+            <small>fandom : <?= $p['idol']; ?></small>
             <br>
+            <?php if($p['show']=='Y') :?>
             <small class="align-right">by : <?= $p['name']; ?> </small>
             <br>
+            <?php endif; ?>
             <a href="<?= base_url(); ?>post/artikel/<?= $p['id_post']; ?>" class="btn btn-primary">Lihat &raquo;</a>
+            <?php if(logged_in()) : ?>
             <a href="<?= base_url(); ?>post/update/<?= $p['id_post']; ?>" class="btn btn-success">Update</a>
             <a href="<?= base_url(); ?>post/hapus/<?= $p['id_post']; ?>" class="btn btn-danger"
                 onclick="return confirm('Yakin ingin menghapus post tersebut?')">Hapus</a>
             <hr>
+            <?php endif; ?>
         </div>
         <?php endforeach; ?>
         <?php endif; ?>
