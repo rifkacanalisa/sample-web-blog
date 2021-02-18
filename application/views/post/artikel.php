@@ -15,7 +15,7 @@
                 <?= $post['isi']; ?></p>
             <small>fandom : <?= $post['idol']; ?></small>
             <br>
-            <?php if($p['show']=='Y') :?>
+            <?php if($post['show']=='Y') :?>
             <small class="align-right">by : <?= $post['name']; ?> </small>
             <?php endif; ?>
             <br>

@@ -18,7 +18,7 @@
                         </div>
                         <div class="form-group">
                             <label>Idol</label>
-                            <input type="text" class="form-control" name="idol" id="idol" placeholder="Masukan Idol atau Fandom" value="<?= set_value('idol'); ?>">
+                            <input type="text" class="form-control" name="idol" id="idol" placeholder="Masukan Idol atau Fandom" value="<?= $post['idol']; ?>">
                             <?= form_error('judul', '<small class="text-danger">', '</small>') ?>
                         </div>
                         <div class="form-group">

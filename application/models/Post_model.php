@@ -52,7 +52,11 @@ class Post_model extends CI_Model
     public function updatePost($id){
         $data = array(
             'judul' => $this->input->post('judul'),
-            'isi' => $this->input->post('isi')
+            'isi' => $this->input->post('isi'),
+            'status' => $this->input->post('status'),
+            'show' => $this->input->post('show'),
+            'idol' => $this->input->post('idol')
+
         );
 
         $this->db->where('id_post', $id)->update('posts', $data);
