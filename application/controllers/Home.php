@@ -18,6 +18,7 @@ class Home extends CI_Controller {
         // $judul aja.
 
         $id = $this->session->userdata('id_user');
+        echo "<pre>".var_dump($data);
         $data['users'] = $this->User_model->getUserData($id);
 
         $this->load->view('home/index', $data);

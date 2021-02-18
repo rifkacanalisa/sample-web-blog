@@ -6,6 +6,6 @@
                 <?php else : echo "User"; ?>
                 <?php endif; ?>
             </h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            <p class="lead">Halaman Utama</p>
         </div>
     </div>
