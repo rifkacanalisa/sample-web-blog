@@ -39,6 +39,8 @@ class Auth extends CI_Controller
                         'email' => $user['email']
                     ];
                     $this->session->set_userdata($data);
+                    $this->session->set_userdata('id_user', $data['id_user']);
+                    
                     redirect('home');
                 } else {
                     $this->session->set_flashdata('message2', '<small class=" text-danger">Password salah</small>');
