@@ -14,7 +14,7 @@
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="<?= $h['pictures']; ?>">
+                <img src="<?= $h['pictures']; ?>" width="200" height="300">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
