@@ -6,6 +6,6 @@
                 <?php else : echo "User"; ?>
                 <?php endif; ?>
             </h1>
-            <p class="lead">Halaman Utama</p>
+            <p class="lead">KPOP Friends.. share your information</p>
         </div>
     </div>
