@@ -19,8 +19,6 @@ class Home extends CI_Controller {
         // jadi dari $data['judul], nanti di view dapat diambil dengan 
         // $judul aja.
 
-        echo "<pre>".var_dump($data);
-
         $this->load->view('home/index', $data);
         $this->load->view('templates/footer');
 
