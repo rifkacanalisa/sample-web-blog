@@ -44,6 +44,7 @@ class Post_model extends CI_Model
 
     public function getPostById($id){
         return $this->db
+        ->join('users', 'id_writer = id')
         ->where('id_post', $id)
         ->get('posts')
         ->row_array();
