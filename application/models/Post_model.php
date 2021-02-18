@@ -22,7 +22,7 @@ class Post_model extends CI_Model
     public function getPostsWriter($limit, $start, $keyword = null, $id){
         return $this->db
         ->select("id_post, judul, SUBSTRING(isi, 1, 140) as isi, status, show, idol, name")
-        ->join('users', 'id_writer = id_user')
+        ->join('users', 'id_writer = id')
         ->where('id_writer', $id)
         ->like('judul', $keyword)
         ->order_by('id_post','asc')
