@@ -1,4 +1,4 @@
-<?php   
+<?php
 
 class Post extends CI_Controller
 {
@@ -12,11 +12,11 @@ class Post extends CI_Controller
     public function index()
     {
         $data['judul'] = "Halaman Post";
-        
+
         $this->load->library('pagination');
         //base_url untuk memberi tahu halaman utamanya dimana
         $config['base_url'] = 'https://sample-web-blog.herokuapp.com/post';
-        if(isset($_POST['submit'])){
+        if (isset($_POST['submit'])) {
             $data['keyword'] = $this->input->post('keyword');
             $this->session->set_userdata('keyword', $data['keyword']);
         } else {
@@ -69,22 +69,26 @@ class Post extends CI_Controller
 
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(3);
-        
+
         if ($this->session->userdata('keyword') == false) {
             $this->session->set_userdata('keyword', '');
         }
+        if (logged_in()) {
+            $id = $this->session->userdata('id_user');
+            $data['posts'] = $this->Post_model
+                ->getPostsWriter($config['per_page'], $data['start'], $data['keyword'], $id);
+        } else {
+            $data['posts'] = $this->Post_model
+                ->getPublicPost($config['per_page'], $data['start'], $data['keyword']);
+        }
 
-        $id = $this->session->userdata('id_user');
-        
-        $data['posts'] = $this->Post_model
-        ->getPostsWriter($config['per_page'], $data['start'], $data['keyword'], $id);
-        
         $this->load->view('templates/header', $data);
         $this->load->view('post/index', $data);
         $this->load->view('templates/footer');
     }
 
-    public function tambah(){
+    public function tambah()
+    {
         if (logged_in()) {
             $data['judul'] = 'Tambah Post';
 
@@ -104,17 +108,18 @@ class Post extends CI_Controller
             }
         } else {
             redirect('auth');
-        }      
+        }
     }
 
-    public function update($id){
+    public function update($id)
+    {
         $data['judul'] = "Update Post";
         $data['post'] = $this->Post_model->getPostById($id);
 
         $this->form_validation->set_rules('judul', 'Judul Post', 'required');
         $this->form_validation->set_rules('isi', 'Isi Post', 'required');
 
-        if($this->form_validation->run() == false){
+        if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('post/update', $data);
             $this->load->view('templates/footer');
@@ -124,10 +129,10 @@ class Post extends CI_Controller
             $this->session->set_flashdata('alert', 'secondary');
             redirect(base_url() . "post");
         }
-        
     }
 
-    public function artikel($id){
+    public function artikel($id)
+    {
         $data['judul'] = "Update Post";
         $data['post'] = $this->Post_model->getPostById($id);
 
@@ -136,11 +141,11 @@ class Post extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function hapus($id){
+    public function hapus($id)
+    {
         $this->Post_model->hapusPost($id);
         $this->session->set_flashdata('notif', 'Dihapus');
         $this->session->set_flashdata('alert', 'danger');
         redirect(base_url() . "post");
     }
-    
 }

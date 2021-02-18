@@ -8,7 +8,9 @@
     <div class="row">
         <div class="col-md-4 d-flex justify-content-between">
             <h1>Artikel</h1>
+            <?php if(logged_in()) : ?>
             <a href="<?= base_url(); ?>post/tambah" class="btn btn-primary align-self-center">Tambah Post</a>
+            <?php endif;?>
         </div>
     </div>
     <?= $this->pagination->create_links(); ?>
@@ -20,7 +22,7 @@
             <p class=""
                 style="-webkit-line-clamp:3; overflow:hidden; text-overflow:ellipsis; display: -webkit-box; -webkit-box-orient:vertical;">
                 <?= $p['isi']; ?></p>
-            <small><?= $p['idol']; ?></small> 
+            <small>fandom : <?= $p['idol']; ?></small> 
             <br>
             <small class="align-right">by : <?= $p['name']; ?> </small>
             <br>
