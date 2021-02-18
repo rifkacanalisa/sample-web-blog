@@ -8,7 +8,7 @@ class Post_model extends CI_Model
             'isi' => $this->input->post('isi'),
             'status' => $this->input->post('status'),
             'show' => $this->input->post('show'),
-            'id_writer' => $this->session->userdata('id'),
+            'id_writer' => $this->session->userdata('id_user'),
             'idol' => $this->input->post('idol')
         );
         $this->db->insert('posts',$data);
