@@ -2,7 +2,7 @@
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Hello, 
-                <?php if(logged_in()) : echo $data['nama']; ?>
+                <?php if(logged_in()) : echo $this->session->userdata("id_user") ?>
                 <?php else : echo "User"; ?>
                 <?php endif; ?>
             </h1>
