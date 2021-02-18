@@ -31,6 +31,7 @@ class Auth extends CI_Controller
         $password = $this->input->post('password');
 
         $user = $this->User_model->getUserByEmail($email);
+        echo "<pre>".var_dump($user);
 
         if ($user) {
             if ($user['is_active'] == 1) {
@@ -39,9 +40,9 @@ class Auth extends CI_Controller
                         'email' => $user['email']
                     ];
                     $this->session->set_userdata($data);
-                    $this->session->set_userdata('id_user', $data['id_user']);
-                    
-                    redirect('home');
+                    $this->session->set_userdata('email', $user['email']);
+
+                    #redirect('home');
                 } else {
                     $this->session->set_flashdata('message2', '<small class=" text-danger">Password salah</small>');
                     redirect('auth');
