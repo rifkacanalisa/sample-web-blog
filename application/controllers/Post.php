@@ -20,7 +20,7 @@ class Post extends CI_Controller
             $data['keyword'] = $this->input->post('keyword');
             $this->session->set_userdata('keyword', $data['keyword']);
         } else {
-            $data['keyword'] = $_SESSION['keyword'];
+            $data['keyword'] = $this->session->userdata('keyword');
         }
         $config['total_rows'] = $this->Post_model->countPosts($data['keyword']);
         $config['per_page'] = 9;
