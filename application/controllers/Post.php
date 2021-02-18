@@ -77,14 +77,10 @@ class Post extends CI_Controller
         if (logged_in()) {
             $parameter = 'id_writer';
             $isi = $this->session->userdata('id_user');
-            #$data['posts'] = $this->Post_model
-              #  ->getPostsWriter($config['per_page'], $data['start'], $data['keyword'], $id);
         }
         else {
             $parameter = 'status';
             $isi = 'public';
-           # $data['posts'] = $this->Post_model
-            #    ->getPublicPost($config['per_page'], $data['start'], $data['keyword']);
         }
 
         $data['posts'] = $this->Post_model

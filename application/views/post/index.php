@@ -14,10 +14,17 @@
         </div>
     </div>
     <?= $this->pagination->create_links(); ?>
+    <?php
+    if ($p['status'] == 'private') :
+        $warna = "text-white bg-dark";
+    else :
+        $warna = "text-white bg-info";
+    endif;
+    ?>
     <div class="row mt-3">
         <?php if (isset($posts)) : ?>
             <?php foreach ($posts as $p) : ?>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-4 <?= $warna; ?> mb-3">
                     <h3 class="text-truncate"><?= $p['judul']; ?></h3>
                     <p class="" style="-webkit-line-clamp:3; overflow:hidden; text-overflow:ellipsis; display: -webkit-box; -webkit-box-orient:vertical;">
                         <?= $p['isi']; ?></p>
