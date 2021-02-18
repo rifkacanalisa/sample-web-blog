@@ -36,11 +36,12 @@ class Auth extends CI_Controller
             if ($user['is_active'] == 1) {
                 if (password_verify($password, $user['password'])) {
                     $data = [
-                        'email' => $user['email']
+                        'id_user' => $user['id'],
+                        'email' => $user['email'],
+                        'name' => $user['name']
                     ];
                     $this->session->set_userdata($data);
-                    $this->session->set_userdata('id_user', $user['id']);
-
+                    
                     redirect('home');
                 } else {
                     $this->session->set_flashdata('message2', '<small class=" text-danger">Password salah</small>');

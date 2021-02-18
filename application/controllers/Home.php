@@ -1,17 +1,10 @@
 <?php   
 class Home extends CI_Controller {
-        
-        public function __construct()
-        {
-            parent::__construct();
-            $this->load->model('User_model');
-        }
+
 
 	public function index ()
 	{
         $data['judul'] = "Home";
-        $id = $this->session->userdata('id_user');
-        $data['users'] = $this->User_model->getUserData($id);
   
         $this->load->view('templates/header', $data);
         // setiap array yang dikirimkan ke view 
