@@ -35,7 +35,16 @@ class Post extends CI_Controller
             $data['urutan'] = $this->session->userdata('urutan');
         }
 
-        $config['total_rows'] = $this->Post_model->countPosts($data['keyword']);
+        if (logged_in()) :
+            $parameter = 'id_writer';
+            $isi = $this->session->userdata('id_user');
+        else :
+            $parameter = 'status';
+            $isi = 'public';
+        endif;
+
+
+        $config['total_rows'] = $this->Post_model->countPosts($parameter, $isi, $data['keyword']);
         $config['per_page'] = 9;
 
         //styling page
@@ -83,14 +92,7 @@ class Post extends CI_Controller
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(3);
 
-        if (logged_in()) :
-            $parameter = 'id_writer';
-            $isi = $this->session->userdata('id_user');
-        else :
-            $parameter = 'status';
-            $isi = 'public';
-        endif;
-
+        
         if ($this->session->userdata('keyword') == false) :
             $this->session->set_userdata('keyword', '');
         endif;
@@ -99,8 +101,6 @@ class Post extends CI_Controller
             $this->session->set_userdata('sort', 'id_post');
             $this->session->set_userdata('urutan', 'ASC');
         endif;
-
-
 
         $data['posts'] = $this->Post_model
             ->getPostsWriter($config['per_page'], $data['start'], $parameter, $isi, $data['sort'], $data['urutan'],  $data['keyword']);

@@ -30,8 +30,13 @@ class Post_model extends CI_Model
         return $this->db->get('posts')->num_rows();
     }
 
-    public function countPosts($keyword = null){
-        return $this->db->like('judul', $keyword)->from('posts')->count_all_results();
+    public function countPosts($parameter, $isi, $keyword = null){
+        return $this->db
+        ->where($parameter, $isi)
+        ->like('judul', $keyword)
+        ->or_like('idol', $keyword)
+        ->from('posts')
+        ->count_all_results();
     }
 
     public function getPostById($id){
