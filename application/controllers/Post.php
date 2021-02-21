@@ -101,11 +101,11 @@ class Post extends CI_Controller
             $this->session->set_userdata('urutan', 'ASC');
         endif;
 
-        $data['posts'] = $this->Post_model
-            ->getPostsWriter($config['per_page'], $data['start'], $parameter, $isi, $data['keyword']);
-
         #$data['posts'] = $this->Post_model
-          #  ->getPostsWriter($config['per_page'], $data['start'], $data['sort'], $data['urutan'], $parameter, $isi, $data['keyword']);
+        #    ->getPostsWriter($config['per_page'], $data['start'], $parameter, $isi, $data['keyword']);
+
+        $data['posts'] = $this->Post_model
+            ->getPostsWriter($config['per_page'], $data['start'], $data['sort'], $data['urutan'], $parameter, $isi, $data['keyword']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('post/index', $data);

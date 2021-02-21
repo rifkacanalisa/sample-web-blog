@@ -14,24 +14,22 @@ class Post_model extends CI_Model
         $this->db->insert('posts',$data);
     }
 
-    public function getPostsWriter($limit, $start, $parameter, $isi, $keyword = null){
+    public function getPostsWriter2($limit, $start, $parameter, $isi, $keyword = null){
         return $this->db
         ->select("id_post, judul, SUBSTRING(isi, 1, 140) as isi, status, show, idol, name")
         ->join('users', 'id_writer = id')
-        ->like('judul', $keyword)
-        ->or_like('idol', $keyword)
         ->where($parameter, $isi)
+        ->like('judul', $keyword)
         ->order_by('id_post', 'ASC')
         ->get('posts', $limit, $start)
         ->result_array();
     }
 
-    public function getPostsWriter2($limit, $start, $sort, $urutan, $parameter, $isi, $keyword = null){
+    public function getPostsWriter($limit, $start, $sort, $urutan, $parameter, $isi, $keyword = null){
         return $this->db
         ->select("id_post, judul, SUBSTRING(isi, 1, 140) as isi, status, show, idol, name")
         ->join('users', 'id_writer = id')
         ->like('judul', $keyword)
-        ->or_like('idol', $keyword)
         ->where($parameter, $isi)
         ->order_by($sort, $urutan)
         ->get('posts', $limit, $start)
