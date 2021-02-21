@@ -21,7 +21,7 @@ class Post_model extends CI_Model
         ->where($parameter, $isi)
         ->like('judul', $keyword)
         ->or_like('idol', $keyword)
-        ->order_by($sort,$urutan)
+        ->order_by($sort, $urutan)
         ->get('posts', $limit, $start)
         ->result_array();
     }

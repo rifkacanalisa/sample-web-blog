@@ -83,22 +83,24 @@ class Post extends CI_Controller
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(3);
 
-        if ($this->session->userdata('keyword') == false) {
-            $this->session->set_userdata('keyword', '');
-        }
-
-        if ($this->session->userdata('sort') == false && $this->session->userdata('urutan') == false) {
-            $this->session->set_userdata('sort', 'id_post');
-            $this->session->set_userdata('urutan', 'ASC');
-        }
-
-        if(logged_in()){
+        if (logged_in()) :
             $parameter = 'id_writer';
             $isi = $this->session->userdata('id_user');
-        } else {
+        else :
             $parameter = 'status';
             $isi = 'public';
-        }
+        endif;
+
+        if ($this->session->userdata('keyword') == false) :
+            $this->session->set_userdata('keyword', '');
+        endif;
+
+        if ($this->session->userdata('sort') == false && $this->session->userdata('urutan') == false) :
+            $this->session->set_userdata('sort', 'id_post');
+            $this->session->set_userdata('urutan', 'ASC');
+        endif;
+
+
 
         $data['posts'] = $this->Post_model
             ->getPostsWriter($config['per_page'], $data['start'], $parameter, $isi, $data['sort'], $data['urutan'],  $data['keyword']);
