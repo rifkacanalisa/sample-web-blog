@@ -16,13 +16,6 @@ class Post extends CI_Controller
         //base_url untuk memberi tahu halaman utamanya dimana
         $config['base_url'] = 'https://kpop-sharing.herokuapp.com/post';
 
-        if (logged_in()) {
-            $parameter = 'id_writer';
-            $isi = $this->session->userdata('id_user');
-        } else {
-            $parameter = 'status';
-            $isi = 'public';
-        }
 
         if (isset($_POST['submit'])) {
             $data['keyword'] = $this->input->post('keyword');
@@ -90,8 +83,6 @@ class Post extends CI_Controller
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(3);
 
-        
-
         if ($this->session->userdata('keyword') == false) {
             $this->session->set_userdata('keyword', '');
         }
@@ -99,6 +90,14 @@ class Post extends CI_Controller
         if ($this->session->userdata('sort') == false && $this->session->userdata('urutan') == false) {
             $this->session->set_userdata('sort', 'id_post');
             $this->session->set_userdata('urutan', 'ASC');
+        }
+
+        if(logged_in()){
+            $parameter = 'id_writer';
+            $isi = $this->session->userdata('id_user');
+        } else {
+            $parameter = 'status';
+            $isi = 'public';
         }
 
         $data['posts'] = $this->Post_model
