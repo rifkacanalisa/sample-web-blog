@@ -18,9 +18,9 @@ class Post_model extends CI_Model
         return $this->db
         ->select("id_post, judul, SUBSTRING(isi, 1, 140) as isi, status, show, idol, name")
         ->join('users', 'id_writer = id')
-        ->where($parameter, $isi)
         ->like('judul', $keyword)
         ->or_like('idol', $keyword)
+        ->where($parameter, $isi)
         ->order_by($sort, $urutan)
         ->get('posts', $limit, $start)
         ->result_array();
@@ -32,9 +32,9 @@ class Post_model extends CI_Model
 
     public function countPosts($parameter, $isi, $keyword = null){
         return $this->db
-        ->where($parameter, $isi)
         ->like('judul', $keyword)
         ->or_like('idol', $keyword)
+        ->where($parameter, $isi)
         ->from('posts')
         ->count_all_results();
     }
