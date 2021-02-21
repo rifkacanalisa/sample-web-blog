@@ -43,7 +43,7 @@ class Post extends CI_Controller
             $isi = 'public';
         endif;
 
-        echo var_dump($parameter);
+        echo var_dump($isi);
 
         $config['total_rows'] = $this->Post_model->countPosts($parameter, $isi, $data['keyword']);
         $config['per_page'] = 9;

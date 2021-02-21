@@ -18,7 +18,7 @@
             <div class="form-group col-md-4">
                 <label>Diurutkan</label>
                 <select name="sort" class="form-control">
-                    <option selected>Berdasarkan</option>
+                    <option selected value="id_post">Berdasarkan</option>
                     <option value="judul">Judul</option>
                     <option value="idol">Fandom</option>
                 </select>
@@ -27,7 +27,7 @@
             <div class="form-group col-md-4">
                 <label>Urutan</label>
                 <select name="urutan" class="form-control">
-                    <option selected>Pilihan Urutan</option>
+                    <option selected value="ASC">Pilihan Urutan</option>
                     <option value="ASC">A-Z (Ascending)</option>
                     <option value="DESC">Z-A (Descending)</option>
                 </select>
