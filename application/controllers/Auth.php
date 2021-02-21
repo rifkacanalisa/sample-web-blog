@@ -130,9 +130,11 @@ class Auth extends CI_Controller
         $email = $this->input->get('email');
         $token = $this->input->get('token');
         $data = $this->User_model->getUserByEmail($email);
-
+        $token_cek = password_hash($token, PASSWORD_DEFAULT);
+        
         if ($data) {
             $user_token = $this->User_model->getUserToken($email);
+            echo $token_cek . " dan " . $user_token['code'];
             if (password_verify($token, $user_token['code'])) {
                 if (time() - $user_token['created_at'] < 60 * 4) {
                     $this->User_model->Activate($email);
