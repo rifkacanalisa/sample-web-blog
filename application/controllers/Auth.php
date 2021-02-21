@@ -114,7 +114,7 @@ class Auth extends CI_Controller
         $this->email->to($this->input->post('email'));
         $this->email->subject("Verification Email for KPOP-SHARING");
         $this->email->message(
-            'Silahkan verifikasi email anda : <a href:"' . base_url() . '/auth/verify?email=' .
+            'Silahkan verifikasi email anda : <a href="' . base_url() . '/auth/verify?email=' .
                 $this->input->post('email') . '&token=' . $token . '">Activate</a>'
         );
 
