@@ -43,7 +43,6 @@ class Post_model extends CI_Model
     public function countPosts($parameter, $isi, $keyword = null){
         return $this->db
         ->like('judul', $keyword)
-        ->or_like('idol', $keyword)
         ->where($parameter, $isi)
         ->from('posts')
         ->count_all_results();
