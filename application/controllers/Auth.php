@@ -130,12 +130,13 @@ class Auth extends CI_Controller
         $email = $this->input->get('email');
         $token = $this->input->get('token');
         $data = $this->User_model->getUserByEmail($email);
+        echo var_dump($data);
 
         if ($data) {
             $user_token = $this->User_model->getUserToken($email);
             if (password_verify($token, $user_token['code'])) {
                 if (time() - $user_token['created_at'] < 60 * 4) {
-                    $this->User_model->Activate($email);
+                    $this->User_model->activate($email);
                     $this->session->set_flashdata('alert', '<div class="alert alert-success" role="alert">Aktivasi Berhasil, Silahkan Login</div>');
                     redirect('auth');
                 } else {
