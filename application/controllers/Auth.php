@@ -130,7 +130,6 @@ class Auth extends CI_Controller
         $email = $this->input->get('email');
         $token = $this->input->get('token');
         $data = $this->User_model->getUserByEmail($email);
-        echo var_dump($data);
 
         if ($data) {
             $user_token = $this->User_model->getUserToken($email);
@@ -143,6 +142,7 @@ class Auth extends CI_Controller
                     $this->User_model->deleteUser($email);
                     $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Token kadaluarsa</div>');
                     redirect('auth');
+                    echo var_dump($data);
                 }
             } else {
                 $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Token salah</div>');
