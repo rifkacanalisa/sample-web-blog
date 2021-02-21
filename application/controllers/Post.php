@@ -39,8 +39,8 @@ class Post extends CI_Controller
             $parameter = 'id_writer';
             $isi = $this->session->userdata('id_user');
         else :
-            $data['parameter'] = $this->session->userdata('sort');
-            $data['isi'] = $this->session->userdata('urutan');
+            #$data['parameter'] = $this->session->userdata('sort');
+            #$data['isi'] = $this->session->userdata('urutan');
 
             $parameter = 'status';
             $isi = 'public';
