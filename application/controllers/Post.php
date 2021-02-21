@@ -39,9 +39,6 @@ class Post extends CI_Controller
             $parameter = 'id_writer';
             $isi = $this->session->userdata('id_user');
         else :
-            #$data['parameter'] = $this->session->userdata('sort');
-            #$data['isi'] = $this->session->userdata('urutan');
-
             $parameter = 'status';
             $isi = 'public';
         endif;
@@ -105,7 +102,7 @@ class Post extends CI_Controller
         endif;
 
         $data['posts'] = $this->Post_model
-            ->getPostsWriter($config['per_page'], $data['start'], $parameter, $isi, $data['sort'], $data['urutan'],  $data['keyword']);
+            ->getPostsWriter($config['per_page'], $data['start'], $data['sort'], $data['urutan'], $parameter, $isi,  $data['keyword']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('post/index', $data);
