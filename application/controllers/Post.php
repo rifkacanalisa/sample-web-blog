@@ -6,7 +6,6 @@ class Post extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Post_model');
-        
     }
 
     public function index()
@@ -16,12 +15,25 @@ class Post extends CI_Controller
         $this->load->library('pagination');
         //base_url untuk memberi tahu halaman utamanya dimana
         $config['base_url'] = 'https://kpop-sharing.herokuapp.com/post';
+
         if (isset($_POST['submit'])) {
             $data['keyword'] = $this->input->post('keyword');
             $this->session->set_userdata('keyword', $data['keyword']);
         } else {
             $data['keyword'] = $this->session->userdata('keyword');
         }
+
+        if (isset($_POST['simpan'])) {
+            $data['sort'] = $this->input->post('sort');
+            $data['urutan'] = $this->input->post('urutan');
+
+            $this->session->set_userdata('sort', $data['sort']);
+            $this->session->set_userdata('urutan', $data['urutan']);
+        } else {
+            $data['sort'] = $this->session->userdata('sort');
+            $data['urutan'] = $this->session->userdata('urutan');
+        }
+
         $config['total_rows'] = $this->Post_model->countPosts($data['keyword']);
         $config['per_page'] = 9;
 
@@ -73,18 +85,21 @@ class Post extends CI_Controller
         if ($this->session->userdata('keyword') == false) {
             $this->session->set_userdata('keyword', '');
         }
+        if ($this->session->userdata('sort') == false && $this->session->userdata('urutan') == false) {
+            $this->session->set_userdata('sort', 'id_post');
+            $this->session->set_userdata('urutan', 'ASC');
+        }
 
         if (logged_in()) {
             $parameter = 'id_writer';
             $isi = $this->session->userdata('id_user');
-        }
-        else {
+        } else {
             $parameter = 'status';
             $isi = 'public';
         }
 
         $data['posts'] = $this->Post_model
-        ->getPostsWriter($config['per_page'], $data['start'], $parameter, $isi, $data['keyword']);
+            ->getPostsWriter($config['per_page'], $data['start'], $parameter, $isi, $data['sort'], $data['urutan'],  $data['keyword']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('post/index', $data);

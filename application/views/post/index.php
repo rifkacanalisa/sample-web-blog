@@ -13,6 +13,25 @@
             <?php endif; ?>
         </div>
     </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <form action="<?= base_url(); ?>post" method="POST">
+                <label>Diurutkan</label>
+                <select name="sort" class="form-control">
+                    <option selected>Berdasarkan</option>
+                    <option value="judul">Judul</option>
+                    <option value="idol">Fandom</option>
+                </select>
+                <label>Urutan</label>
+                <select name="urutan" class="form-control">
+                    <option selected>Pilihan Urutan</option>
+                    <option value="ASC">A-Z (Ascending)</option>
+                    <option value="DESC">Z-A (Descending)</option>
+                </select>
+                <button type="simpan" class="btn btn-primary">Simpan</button>
+            </form>
+        </div>
+    </div>
     <?= $this->pagination->create_links(); ?>
 
     <div class="row mt-3">
