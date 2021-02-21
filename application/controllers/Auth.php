@@ -19,6 +19,10 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Login Page';
+            
+            $user_token = $this->User_model->getUserToken('r.joon1799@gmail.com');
+            echo var_dump($user_token);
+    
             $this->load->view('auth/templates/header', $data);
             $this->load->view('auth/login');
             $this->load->view('auth/templates/footer');
@@ -33,7 +37,7 @@ class Auth extends CI_Controller
         $password = $this->input->post('password');
 
         $user = $this->User_model->getUserByEmail($email);
-
+       
         if ($user) {
             if ($user['is_active'] == 1) {
                 if (password_verify($password, $user['password'])) {
@@ -142,7 +146,6 @@ class Auth extends CI_Controller
                     $this->User_model->deleteUser($email);
                     $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Token kadaluarsa</div>');
                     redirect('auth');
-                    echo var_dump($data);
                 }
             } else {
                 $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Token salah</div>');
