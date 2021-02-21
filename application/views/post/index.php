@@ -33,7 +33,7 @@
                 </select>
             </div>
             <div class="form-group col-md-4">
-                <button type="simpan" class="btn btn-primary">Simpan</button>
+                <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
             </div>
         </div>
     </form>
