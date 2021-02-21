@@ -4,6 +4,7 @@
             <div class="col-md-4">
                 <div class="card mt-5">
                     <div class="card-body">
+                        <?= $this->session->flashdata('alert'); ?>
                         <form method="POST" action="">
                             <h1>Form Login</h1>
                             <div class="form-group">
