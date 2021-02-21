@@ -88,10 +88,10 @@ class Auth extends CI_Controller
                 'code' => $tokenh,
                 'created_at' => time()
             ];
-
             $this->User_model->register();
             $this->User_model->createVerification($user_token);
             $this->_sendEmail($token);
+
             redirect('auth');
         }
     }
@@ -130,13 +130,9 @@ class Auth extends CI_Controller
         $email = $this->input->get('email');
         $token = $this->input->get('token');
         $data = $this->User_model->getUserByEmail($email);
-        $token_cek = password_hash($token, PASSWORD_DEFAULT);
-        
-        $user_token = $this->User_model->getUserToken($email);
-            echo var_dump($token_cek);
-            echo var_dump($user_token['code']);
+
         if ($data) {
-            
+            $user_token = $this->User_model->getUserToken($email);
             if (password_verify($token, $user_token['code'])) {
                 if (time() - $user_token['created_at'] < 60 * 4) {
                     $this->User_model->Activate($email);
