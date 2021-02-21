@@ -39,11 +39,12 @@ class Post extends CI_Controller
             $parameter = 'id_writer';
             $isi = $this->session->userdata('id_user');
         else :
+            $data['parameter'] = $this->session->userdata('sort');
+            $data['isi'] = $this->session->userdata('urutan');
+
             $parameter = 'status';
             $isi = 'public';
         endif;
-
-        echo var_dump($isi);
 
         $config['total_rows'] = $this->Post_model->countPosts($parameter, $isi, $data['keyword']);
         $config['per_page'] = 9;
