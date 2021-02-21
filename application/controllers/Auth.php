@@ -114,8 +114,7 @@ class Auth extends CI_Controller
         $this->email->to($this->input->post('email'));
         $this->email->subject("Verification Email for KPOP-SHARING");
         $this->email->message(
-            'Silahkan verifikasi email anda : <a href="' . base_url() . '/auth/verify?email=' .
-                $this->input->post('email') . '&token=' . $token . '">Activate</a>'
+            'Silahkan verifikasi email Anda: <a href="' . base_url() . '/auth/verify?email=' . $this->input->post('email') . '&token=' . $token . '">Activate</a>'
         );
 
         if ($this->email->send()) {
@@ -131,24 +130,25 @@ class Auth extends CI_Controller
         $email = $this->input->get('email');
         $token = $this->input->get('token');
         $data = $this->User_model->getUserByEmail($email);
+
         if ($data) {
             $user_token = $this->User_model->getUserToken($email);
             if (password_verify($token, $user_token['code'])) {
-                if (time() - $user_token['created_at'] < 60 * 4) { //kurang dari 4 menit
-                    $this->User_model->activate($email);
-                    $this->session->set_flashdata('alert', '<div class="alert alert-success" role="alert"> Aktivasi Berhasil, Silahkan Login </div>');
+                if (time() - $user_token['created_at'] < 60 * 4) {
+                    $this->User_model->Activate($email);
+                    $this->session->set_flashdata('alert', '<div class="alert alert-success" role="alert">Aktivasi Berhasil, Silahkan Login</div>');
                     redirect('auth');
                 } else {
                     $this->User_model->deleteUser($email);
-                    $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert"> Aktivasi Gagal, Token Kadaluarsa </div>');
+                    $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Token kadaluarsa</div>');
                     redirect('auth');
                 }
             } else {
-                $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert"> Aktivasi Gagal, Token Salah </div>');
+                $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Token salah</div>');
                 redirect('auth');
             }
         } else {
-            $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert"> Aktivasi Gagal, Email Salah </div>');
+            $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Email salah</div>');
             redirect('auth');
         }
     }

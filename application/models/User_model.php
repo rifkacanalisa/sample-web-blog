@@ -34,7 +34,7 @@ class User_model extends CI_Model
         return $this->db->get_where('verification', ['email' => $email])->row_array();
     }
 
-    public function activate($email)
+    public function Activate($email)
     {
         $this->db->set('is_active', 1)->update('users', ['email' => $email]);
         $this->db->delete('verification', ['email' => $email]);
