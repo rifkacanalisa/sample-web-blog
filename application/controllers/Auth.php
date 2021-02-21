@@ -19,15 +19,15 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Login Page';
-            $token = $this->input->get('token');
-            $user_token = $this->User_model->getUserToken('r.joon1799@gmail.com');
-            echo var_dump($user_token);
-            if(password_verify($token, $user_token['code'])){
-                echo "TRUE";
-            }
-            else{
-                echo "False";
-            }
+            #$token = $this->input->get('token');
+            #$user_token = $this->User_model->getUserToken('r.joon1799@gmail.com');
+            #echo var_dump($user_token);
+            #if(password_verify($token, $user_token['code'])){
+            #    echo "TRUE";
+            #}
+            #else{
+            #    echo "False";
+            #}
     
             $this->load->view('auth/templates/header', $data);
             $this->load->view('auth/login');
