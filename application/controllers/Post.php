@@ -91,7 +91,7 @@ class Post extends CI_Controller
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(3);
 
-        
+
         if ($this->session->userdata('keyword') == false) :
             $this->session->set_userdata('keyword', '');
         endif;
@@ -102,7 +102,10 @@ class Post extends CI_Controller
         endif;
 
         $data['posts'] = $this->Post_model
-            ->getPostsWriter($config['per_page'], $data['start'], $data['sort'], $data['urutan'], $parameter, $isi,  $data['keyword']);
+            ->getPostsWriter($config['per_page'], $data['start'], $parameter, $isi, $data['keyword']);
+
+        #$data['posts'] = $this->Post_model
+          #  ->getPostsWriter($config['per_page'], $data['start'], $data['sort'], $data['urutan'], $parameter, $isi, $data['keyword']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('post/index', $data);
