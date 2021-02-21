@@ -134,7 +134,7 @@ class Auth extends CI_Controller
         
         if ($data) {
             $user_token = $this->User_model->getUserToken($email);
-            echo $token_cek . " dan " . $user_token['code'];
+            echo var_dump($token_cek) . var_dump($user_token['code']);
             if (password_verify($token, $user_token['code'])) {
                 if (time() - $user_token['created_at'] < 60 * 4) {
                     $this->User_model->Activate($email);
