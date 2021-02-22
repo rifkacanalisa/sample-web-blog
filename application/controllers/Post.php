@@ -39,7 +39,7 @@ class Post extends CI_Controller
         $isi = 'public';
 
         $config['total_rows'] = $this->Post_model->countPosts($parameter, $isi, $data['keyword']);
-        $config['per_page'] = 9;
+        $config['per_page'] = 6;
 
         //styling page
         $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
