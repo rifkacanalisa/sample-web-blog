@@ -1,5 +1,5 @@
 <div class="container">
-    
+
     <div class="row">
         <div class="col-md-4 d-flex justify-content-between">
             <h1>Artikel</h1>
@@ -30,15 +30,24 @@
             </div>
         </div>
     </form>
-    <?php if(isset($_POST['simpan'])) :?>
-    <h5>Post Diurutkan Berdasarkan <?= $this->session->userdata['sort']; ?> Secara <?= $this->session->userdata['urutan']; ?></h5>
+    <?php if (isset($_POST['simpan'])) : ?>
+        <h5>Post Diurutkan Berdasarkan
+            <?php if ($this->session->userdata['sort'] == "idol") :
+                echo "Fandom";
+            else : echo $this->session->userdata['sort'];
+            endif;
+            ?>
+            Secara
+            <?= $this->session->userdata['sort']; ?>
+        </h5>
     <?php endif; ?>
-    <?php //$this->pagination->create_links(); ?>
+    <?php //$this->pagination->create_links(); 
+    ?>
 
     <div class="row mt-3">
         <?php if (isset($posts)) : ?>
             <?php foreach ($posts as $p) : ?>
-                
+
                 <div class="col-md-4 text-white bg-info mb-3">
                     <div class="card-header">from: <?= $p['idol']; ?></div>
                     <div class="card-body">
