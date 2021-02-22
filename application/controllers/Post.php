@@ -12,9 +12,9 @@ class Post extends CI_Controller
     {
         $data['judul'] = "Halaman Post";
 
-        $this->load->library('pagination');
+        //$this->load->library('pagination');
         //base_url untuk memberi tahu halaman utamanya dimana
-        $config['base_url'] = 'https://kpop-sharing.herokuapp.com/post';
+        //$config['base_url'] = 'https://kpop-sharing.herokuapp.com/post';
 
 
         if (isset($_POST['submit'])) {
@@ -38,53 +38,150 @@ class Post extends CI_Controller
         $parameter = 'status';
         $isi = 'public';
 
-        $config['total_rows'] = $this->Post_model->countPosts($parameter, $isi, $data['keyword']);
-        $config['per_page'] = 9;
+        //     $config['total_rows'] = $this->Post_model->countPosts($parameter, $isi, $data['keyword']);
+        //     $config['per_page'] = 9;
 
-        //styling page
-        $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
-        $config['full_tag_close'] = '</ul></nav>';
-        //pembuka untuk first page
-        $config['first_tag_open'] = '<li class="page-item">';
-        //penutup untuk first page
-        $config['first_tag_close'] = '</li>';
+        //     //styling page
+        //     $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
+        //     $config['full_tag_close'] = '</ul></nav>';
+        //     //pembuka untuk first page
+        //     $config['first_tag_open'] = '<li class="page-item">';
+        //     //penutup untuk first page
+        //     $config['first_tag_close'] = '</li>';
 
-        //pembuka untuk last page
-        $config['last_tag_open'] = '<li class="page-item">';
-        //penutup untuk last page
-        $config['last_tag_close'] = '</li>';
+        //     //pembuka untuk last page
+        //     $config['last_tag_open'] = '<li class="page-item">';
+        //     //penutup untuk last page
+        //     $config['last_tag_close'] = '</li>';
 
-        //kata/hal yang ditampilin untuk 
-        //next link
-        $config['next_link'] = '&raquo';
-        //pembuka untuk next-link
-        $config['next_tag_open'] = '<li class="page-item">';
-        //penutup untuk next-link
-        $config['next_tag_close'] = '</li>';
+        //     //kata/hal yang ditampilin untuk 
+        //     //next link
+        //     $config['next_link'] = '&raquo';
+        //     //pembuka untuk next-link
+        //     $config['next_tag_open'] = '<li class="page-item">';
+        //     //penutup untuk next-link
+        //     $config['next_tag_close'] = '</li>';
 
-        //kata/hal yang ditampilin untuk 
-        //previous link
-        $config['prev_link'] = '&laquo';
-        //pembuka untuk previos-link
-        $config['prev_tag_open'] = '<li class="page-item">';
-        //penutup untuk previos-link
-        $config['prev_tag_close'] = '</li>';
+        //     //kata/hal yang ditampilin untuk 
+        //     //previous link
+        //     $config['prev_link'] = '&laquo';
+        //     //pembuka untuk previos-link
+        //     $config['prev_tag_open'] = '<li class="page-item">';
+        //     //penutup untuk previos-link
+        //     $config['prev_tag_close'] = '</li>';
 
-        //pembuka untuk halaman saat ini
-        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
-        //penutup untuk halaman saat ini
-        $config['cur_tag_close'] = '</a></li>';
+        //     //pembuka untuk halaman saat ini
+        //     $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+        //     //penutup untuk halaman saat ini
+        //     $config['cur_tag_close'] = '</a></li>';
 
-        //pembuka untuk nomor2nya
-        $config['num_tag_open'] = '<li class="page-item">';
-        //penutup untuk nomor2nya
-        $config['num_tag_close'] = '</li>';
+        //     //pembuka untuk nomor2nya
+        //     $config['num_tag_open'] = '<li class="page-item">';
+        //     //penutup untuk nomor2nya
+        //     $config['num_tag_close'] = '</li>';
 
-        // atribut tambahan untuk setiap anchornya.
-        $config['attributes'] = ['class' => 'page-link'];
+        //     // atribut tambahan untuk setiap anchornya.
+        //     $config['attributes'] = ['class' => 'page-link'];
 
-        $this->pagination->initialize($config);
-        $data['start'] = $this->uri->segment(3);
+        //     $this->pagination->initialize($config);
+        //     $data['start'] = $this->uri->segment(3);
+
+        //     if ($this->session->userdata('keyword') == false) :
+        //         $this->session->set_userdata('keyword', '');
+        //     endif;
+
+        //     if ($this->session->userdata('sort') == false && $this->session->userdata('urutan') == false) :
+        //         $this->session->set_userdata('sort', 'id_post');
+        //         $this->session->set_userdata('urutan', 'ASC');
+        //     endif;
+
+        //     $data['posts'] = $this->Post_model
+        //         ->getPostsWriter($config['per_page'], $data['start'], $data['sort'], $data['urutan'], $parameter, $isi, $data['keyword']);
+
+        //     $this->load->view('templates/header', $data);
+        //     $this->load->view('post/index', $data);
+        //     $this->load->view('templates/footer');
+        // }
+
+        // public function private()
+        // {
+        //     $data['judul'] = "Halaman Post Pribadi";
+
+        //     $this->load->library('pagination');
+        //     //base_url untuk memberi tahu halaman utamanya dimana
+        //     $config['base_url'] = 'https://kpop-sharing.herokuapp.com/private';
+
+        //     if(!logged_in()){
+        //         redirect(base_url());
+        //     }
+        //     if (isset($_POST['submit'])) {
+        //         $data['keyword'] = $this->input->post('keyword');
+        //         $this->session->set_userdata('keyword', $data['keyword']);
+        //     } else {
+        //         $data['keyword'] = $this->session->userdata('keyword');
+        //     }
+
+        //     if (isset($_POST['simpan'])) {
+        //         $data['sort'] = $this->input->post('sort');
+        //         $data['urutan'] = $this->input->post('urutan');
+
+        //         $this->session->set_userdata('sort', $data['sort']);
+        //         $this->session->set_userdata('urutan', $data['urutan']);
+        //     } else {
+        //         $data['sort'] = $this->session->userdata('sort');
+        //         $data['urutan'] = $this->session->userdata('urutan');
+        //     }
+        //     $parameter = 'id_writer';
+        //     $isi = $this->session->userdata('id_user');
+
+        //     $config['total_rows'] = $this->Post_model->countPosts($parameter, $isi, $data['keyword']);
+        //     $config['per_page'] = 9;
+
+        //     //styling page
+        //     $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
+        //     $config['full_tag_close'] = '</ul></nav>';
+        //     //pembuka untuk first page
+        //     $config['first_tag_open'] = '<li class="page-item">';
+        //     //penutup untuk first page
+        //     $config['first_tag_close'] = '</li>';
+
+        //     //pembuka untuk last page
+        //     $config['last_tag_open'] = '<li class="page-item">';
+        //     //penutup untuk last page
+        //     $config['last_tag_close'] = '</li>';
+
+        //     //kata/hal yang ditampilin untuk 
+        //     //next link
+        //     $config['next_link'] = '&raquo';
+        //     //pembuka untuk next-link
+        //     $config['next_tag_open'] = '<li class="page-item">';
+        //     //penutup untuk next-link
+        //     $config['next_tag_close'] = '</li>';
+
+        //     //kata/hal yang ditampilin untuk 
+        //     //previous link
+        //     $config['prev_link'] = '&laquo';
+        //     //pembuka untuk previos-link
+        //     $config['prev_tag_open'] = '<li class="page-item">';
+        //     //penutup untuk previos-link
+        //     $config['prev_tag_close'] = '</li>';
+
+        //     //pembuka untuk halaman saat ini
+        //     $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+        //     //penutup untuk halaman saat ini
+        //     $config['cur_tag_close'] = '</a></li>';
+
+        //     //pembuka untuk nomor2nya
+        //     $config['num_tag_open'] = '<li class="page-item">';
+        //     //penutup untuk nomor2nya
+        //     $config['num_tag_close'] = '</li>';
+
+        //     // atribut tambahan untuk setiap anchornya.
+        //     $config['attributes'] = ['class' => 'page-link'];
+
+        //     $this->pagination->initialize($config);
+        //     $data['start'] = $this->uri->segment(3);
+
 
         if ($this->session->userdata('keyword') == false) :
             $this->session->set_userdata('keyword', '');
@@ -96,105 +193,10 @@ class Post extends CI_Controller
         endif;
 
         $data['posts'] = $this->Post_model
-            ->getPostsWriter($config['per_page'], $data['start'], $data['sort'], $data['urutan'], $parameter, $isi, $data['keyword']);
+            ->getPostsWriter($data['sort'], $data['urutan'], $parameter, $isi, $data['keyword']);
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('post/index', $data);
-        $this->load->view('templates/footer');
-    }
-
-    public function private()
-    {
-        $data['judul'] = "Halaman Post Pribadi";
-
-        $this->load->library('pagination');
-        //base_url untuk memberi tahu halaman utamanya dimana
-        $config['base_url'] = 'https://kpop-sharing.herokuapp.com/private';
-
-        if(!logged_in()){
-            redirect(base_url());
-        }
-        if (isset($_POST['submit'])) {
-            $data['keyword'] = $this->input->post('keyword');
-            $this->session->set_userdata('keyword', $data['keyword']);
-        } else {
-            $data['keyword'] = $this->session->userdata('keyword');
-        }
-
-        if (isset($_POST['simpan'])) {
-            $data['sort'] = $this->input->post('sort');
-            $data['urutan'] = $this->input->post('urutan');
-
-            $this->session->set_userdata('sort', $data['sort']);
-            $this->session->set_userdata('urutan', $data['urutan']);
-        } else {
-            $data['sort'] = $this->session->userdata('sort');
-            $data['urutan'] = $this->session->userdata('urutan');
-        }
-        $parameter = 'id_writer';
-        $isi = $this->session->userdata('id_user');
-
-        $config['total_rows'] = $this->Post_model->countPosts($parameter, $isi, $data['keyword']);
-        $config['per_page'] = 9;
-
-        //styling page
-        $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
-        $config['full_tag_close'] = '</ul></nav>';
-        //pembuka untuk first page
-        $config['first_tag_open'] = '<li class="page-item">';
-        //penutup untuk first page
-        $config['first_tag_close'] = '</li>';
-
-        //pembuka untuk last page
-        $config['last_tag_open'] = '<li class="page-item">';
-        //penutup untuk last page
-        $config['last_tag_close'] = '</li>';
-
-        //kata/hal yang ditampilin untuk 
-        //next link
-        $config['next_link'] = '&raquo';
-        //pembuka untuk next-link
-        $config['next_tag_open'] = '<li class="page-item">';
-        //penutup untuk next-link
-        $config['next_tag_close'] = '</li>';
-
-        //kata/hal yang ditampilin untuk 
-        //previous link
-        $config['prev_link'] = '&laquo';
-        //pembuka untuk previos-link
-        $config['prev_tag_open'] = '<li class="page-item">';
-        //penutup untuk previos-link
-        $config['prev_tag_close'] = '</li>';
-
-        //pembuka untuk halaman saat ini
-        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
-        //penutup untuk halaman saat ini
-        $config['cur_tag_close'] = '</a></li>';
-
-        //pembuka untuk nomor2nya
-        $config['num_tag_open'] = '<li class="page-item">';
-        //penutup untuk nomor2nya
-        $config['num_tag_close'] = '</li>';
-
-        // atribut tambahan untuk setiap anchornya.
-        $config['attributes'] = ['class' => 'page-link'];
-
-        $this->pagination->initialize($config);
-        $data['start'] = $this->uri->segment(3);
-
-
-        if ($this->session->userdata('keyword') == false) :
-            $this->session->set_userdata('keyword', '');
-        endif;
-
-        if ($this->session->userdata('sort') == false && $this->session->userdata('urutan') == false) :
-            $this->session->set_userdata('sort', 'id_post');
-            $this->session->set_userdata('urutan', 'ASC');
-        endif;
-
-        $data['posts'] = $this->Post_model
-            ->getPostsWriter($config['per_page'], $data['start'], $data['sort'], $data['urutan'], $parameter, $isi, $data['keyword']);
-
+        //$data['posts'] = $this->Post_model
+        //    ->getPostsWriter($config['per_page'], $data['start'], $data['sort'], $data['urutan'], $parameter, $isi, $data['keyword']);
         $this->load->view('templates/header', $data);
         $this->load->view('post/private', $data);
         $this->load->view('templates/footer');

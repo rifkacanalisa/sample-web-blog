@@ -33,7 +33,7 @@
     <?php if(isset($_POST['simpan'])) :?>
     <h5>Post Diurutkan Berdasarkan <?= $this->session->userdata['sort']; ?> Secara <?= $this->session->userdata['urutan']; ?></h5>
     <?php endif; ?>
-    <?= $this->pagination->create_links(); ?>
+    <?php //$this->pagination->create_links(); ?>
 
     <div class="row mt-3">
         <?php if (isset($posts)) : ?>
