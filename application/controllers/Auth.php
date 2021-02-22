@@ -19,16 +19,6 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Login Page';
-            #$email = $this->input->get('email');
-            #$token = $this->input->get('token');
-            #$user_token = $this->User_model->getUserToken('r.joon1799@gmail.com');
-            #echo var_dump($user_token);
-            #echo "<br>" . $email . "<br>" . $token . "<br>";
-            #if ($token == $user_token['code']) {
-            #    echo "TRUE";
-            #} else {
-            #    echo "False";
-            #}
 
             $this->load->view('auth/templates/header', $data);
             $this->load->view('auth/login');
@@ -96,7 +86,7 @@ class Auth extends CI_Controller
             $email = $this->input->post('email');
             $user_token = [
                 'email' => $email,
-                'code' => $token,
+                'code' => $tokenh,
                 'created_at' => time()
             ];
             $this->User_model->register();
@@ -151,18 +141,22 @@ class Auth extends CI_Controller
                     $this->User_model->activate($email);
                     $this->session->set_flashdata('alert', '<div class="alert alert-success" role="alert">Aktivasi Berhasil, Silahkan Login</div>');
                     #redirect('auth');
+                    echo "success";
                 } else {
                     $this->User_model->deleteUser($email);
                     $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Token kadaluarsa</div>');
                     #redirect('auth');
+                    echo "timeout";
                 }
             } else {
                 $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Token salah</div>');
                 #redirect('auth');
+                echo "token salah";
             }
         } else {
             $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Email salah</div>');
             #redirect('auth');
+            echo "email salah";
         }
     }
 
