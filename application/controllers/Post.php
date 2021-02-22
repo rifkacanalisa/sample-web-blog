@@ -221,7 +221,7 @@ class Post extends CI_Controller
                     'status' => $this->input->post('status'),
                     'show' => $this->input->post('show'),
                     'id_writer' => $this->session->userdata('id_user'),
-                    'fandom' => $this->input->post('fandom')
+                    'idol' => $this->input->post('idol')
                 );
                 $this->Post_model->tambahPost($data);
                 $this->session->set_flashdata('notif', 'ditambahkan');
@@ -252,7 +252,7 @@ class Post extends CI_Controller
                 'isi' => $this->input->post('isi'),
                 'status' => $this->input->post('status'),
                 'show' => $this->input->post('show'),
-                'fandom' => $this->input->post('fandom')
+                'idol' => $this->input->post('idol')
     
             );
 
