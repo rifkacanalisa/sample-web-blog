@@ -31,10 +31,9 @@
                             </button>
                         </form>
                         <?php if(logged_in()): ?>
-                        <form action="<?= base_url(); ?>private" method="POST" class="form-inline my-2 my-lg-0">
-                            <input type="hidden" value="" name="keyword">
-                            <button class="nav-link btn" type="submit" name="submit">Dashboard
-                            </button>
+                        
+                            <a href="<?= base_url(); ?>private"><button class="nav-link btn" type="submit" name="submit">Dashboard
+                            </button></a>
                         </form>
                         <?php endif;?>
                     </li>

@@ -113,7 +113,7 @@ class Post extends CI_Controller
 
         $this->load->library('pagination');
         //base_url untuk memberi tahu halaman utamanya dimana
-        $config['base_url'] = 'https://kpop-sharing.herokuapp.com/post';
+        $config['base_url'] = 'https://kpop-sharing.herokuapp.com/private';
 
 
         if (isset($_POST['submit'])) {
