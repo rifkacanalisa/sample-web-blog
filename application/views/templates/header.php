@@ -27,7 +27,7 @@
                     <li class="nav-item">
                         <form action="<?= base_url(); ?>post" method="POST" class="form-inline my-2 my-lg-0">
                             <input type="hidden" value="" name="keyword">
-                            <button class="nav-link btn" type="submit" name="submit">Post
+                            <button class="nav-link btn" type="submit" name="submit">Dashboard
                             </button>
                         </form>
                     </li>
@@ -35,7 +35,7 @@
                         <?php if (logged_in()) : ?>
                             <form action="<?= base_url(); ?>post/private" method="POST" class="form-inline my-2 my-lg-0">
                                 <input type="hidden" value="" name="keyword">
-                                <button class="nav-link btn" type="submit" name="submit">Dashboard
+                                <button class="nav-link btn" type="submit" name="submit">Private
                                 </button>
                             </form>
                         <?php endif; ?>

@@ -8,9 +8,6 @@
     <div class="row">
         <div class="col-md-4 d-flex justify-content-between">
             <h1>Artikel</h1>
-            <?php if (logged_in()) : ?>
-                <a href="<?= base_url(); ?>post/tambah" class="btn btn-primary align-self-center">Tambah Post</a>
-            <?php endif; ?>
         </div>
     </div>
     <form action="<?= base_url(); ?>post" method="POST">
