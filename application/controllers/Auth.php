@@ -115,7 +115,7 @@ class Auth extends CI_Controller
         $this->email->to($this->input->post('email'));
         $this->email->subject("Verification Email for KPOP-SHARING");
         $this->email->message(
-            'Silahkan verifikasi email Anda: <a href="' . base_url() . '/auth/verify?email=' . $this->input->post('email') . '&token=' . $token . '">Activate</a>'
+            'Silahkan verifikasi email Anda: <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . $token . '">Activate</a>'
         );
 
         if ($this->email->send()) {
@@ -140,22 +140,22 @@ class Auth extends CI_Controller
                 if (time() - $user_token['created_at'] < 60 * 4) {
                     $this->User_model->activate($email);
                     $this->session->set_flashdata('alert', '<div class="alert alert-success" role="alert">Aktivasi Berhasil, Silahkan Login</div>');
-                    #redirect('auth');
+                    redirect('auth');
                     echo "success";
                 } else {
                     $this->User_model->deleteUser($email);
                     $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Token kadaluarsa</div>');
-                    #redirect('auth');
+                    redirect('auth');
                     echo "timeout";
                 }
             } else {
                 $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Token salah</div>');
-                #redirect('auth');
+                redirect('auth');
                 echo "token salah";
             }
         } else {
             $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Email salah</div>');
-            #redirect('auth');
+            redirect('auth');
             echo "email salah";
         }
     }
