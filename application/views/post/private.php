@@ -4,7 +4,12 @@
             <div class="col-md-4 alert-<?= $this->session->flashdata('alert'); ?> alert">Post
                 <?= $this->session->flashdata('tipe'); ?><?= $this->session->flashdata('notif'); ?></div>
         </div>
-    <?php endif; ?>
+    <?php
+        unset($_SESSION['alert']);
+        unset($_SESSION['tipe']);
+        unset($_SESSION['notif']);
+    endif;
+    ?>
     <div class="row">
         <div class="col-md-4 d-flex justify-content-between">
             <h1>Artikel</h1>

@@ -1,10 +1,5 @@
 <div class="container">
-    <?php if ($this->session->flashdata('pesan')) : ?>
-        <div class="row">
-            <div class="col-md-4 alert-<?= $this->session->flashdata('alert'); ?> alert">Post
-                <?= $this->session->flashdata('tipe'); ?><?= $this->session->flashdata('notif'); ?></div>
-        </div>
-    <?php endif; ?>
+    
     <div class="row">
         <div class="col-md-4 d-flex justify-content-between">
             <h1>Artikel</h1>

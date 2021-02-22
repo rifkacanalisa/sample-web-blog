@@ -115,7 +115,9 @@ class Post extends CI_Controller
         //base_url untuk memberi tahu halaman utamanya dimana
         $config['base_url'] = 'https://kpop-sharing.herokuapp.com/private';
 
-
+        if(!logged_in()){
+            redirect(base_url());
+        }
         if (isset($_POST['submit'])) {
             $data['keyword'] = $this->input->post('keyword');
             $this->session->set_userdata('keyword', $data['keyword']);
