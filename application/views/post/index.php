@@ -31,7 +31,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label for=""></label>
-                <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
+                <button type="submit" class="btn btn-primary form-control" name="simpan">Simpan</button>
             </div>
         </div>
     </form>
