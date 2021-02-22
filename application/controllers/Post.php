@@ -221,7 +221,7 @@ class Post extends CI_Controller
                     'status' => $this->input->post('status'),
                     'show' => $this->input->post('show'),
                     'id_writer' => $this->session->userdata('id_user'),
-                    'idol' => $this->input->post('idol')
+                    'fandom' => $this->input->post('fandom')
                 );
                 $this->Post_model->tambahPost($data);
                 $this->session->set_flashdata('notif', 'ditambahkan');
@@ -247,7 +247,16 @@ class Post extends CI_Controller
             $this->load->view('post/update', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->Post_model->updatePost($id);
+            $data = array(
+                'judul' => $this->input->post('judul'),
+                'isi' => $this->input->post('isi'),
+                'status' => $this->input->post('status'),
+                'show' => $this->input->post('show'),
+                'fandom' => $this->input->post('fandom')
+    
+            );
+
+            $this->Post_model->updatePost($id, $data);
             $this->session->set_flashdata('notif', 'Di-update');
             $this->session->set_flashdata('alert', 'secondary');
             redirect(base_url() . "post/private");

@@ -18,9 +18,9 @@
                             <?= form_error('isi', '<small class="text-danger">', '</small>') ?>
                         </div>
                         <div class="form-group">
-                            <label>Idol</label>
-                            <input type="text" class="form-control" name="idol" id="idol"
-                                placeholder="Masukan Idol atau Fandom" value="<?= set_value('idol'); ?>">
+                            <label>Fandom</label>
+                            <input type="text" class="form-control" name="fandom" id="fandom"
+                                placeholder="Masukan Idol atau Fandom" value="<?= set_value('fandom'); ?>">
                             <?= form_error('judul', '<small class="text-danger">', '</small>') ?>
                         </div>
                         <div class="form-group">
