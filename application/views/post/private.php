@@ -8,9 +8,7 @@
     <div class="row">
         <div class="col-md-4 d-flex justify-content-between">
             <h1>Artikel</h1>
-            <?php if (logged_in()) : ?>
-                <a href="<?= base_url(); ?>post/tambah" class="btn btn-primary align-self-center">Tambah Post</a>
-            <?php endif; ?>
+            <a href="<?= base_url(); ?>post/tambah" class="btn btn-primary align-self-center">Tambah Post</a>
         </div>
     </div>
     <form action="<?= base_url(); ?>post" method="POST">
@@ -33,13 +31,13 @@
                 </select>
             </div>
             <div class="form-group col-md-4">
-                <label for=""></label>
+                <label for="">Klik Simpan Untuk Perubahan</label>
                 <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
             </div>
         </div>
     </form>
-    <?php if(isset($_POST['simpan'])) :?>
-    <h5>Post Diurutkan Berdasarkan <?= $this->session->userdata['sort']; ?> Secara <?= $this->session->userdata['urutan']; ?></h5>
+    <?php if (isset($_POST['simpan'])) : ?>
+        <h5>Post Diurutkan Berdasarkan <?= $this->session->userdata['sort']; ?> Secara <?= $this->session->userdata['urutan']; ?></h5>
     <?php endif; ?>
     <?= $this->pagination->create_links(); ?>
 
