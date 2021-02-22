@@ -227,7 +227,7 @@ class Post extends CI_Controller
                 $this->session->set_flashdata('notif', 'ditambahkan');
                 $this->session->set_flashdata('alert', 'success');
                 $this->session->set_flashdata('tipe', 'berhasil');
-                redirect(base_url('private'));
+                redirect(base_url() . 'post/private');
             }
         } else {
             redirect('auth');
@@ -250,7 +250,7 @@ class Post extends CI_Controller
             $this->Post_model->updatePost($id);
             $this->session->set_flashdata('notif', 'Di-update');
             $this->session->set_flashdata('alert', 'secondary');
-            redirect(base_url() . "private");
+            redirect(base_url() . "post/private");
         }
     }
 
@@ -269,6 +269,6 @@ class Post extends CI_Controller
         $this->Post_model->hapusPost($id);
         $this->session->set_flashdata('notif', 'Dihapus');
         $this->session->set_flashdata('alert', 'danger');
-        redirect(base_url() . "private");
+        redirect(base_url() . "post/private");
     }
 }
