@@ -19,18 +19,17 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Login Page';
-            $email = $this->input->get('email');
-            $token = $this->input->get('token');
-            $user_token = $this->User_model->getUserToken('r.joon1799@gmail.com');
-            echo var_dump($user_token);
-            echo "<br>".$email."<br>".$token."<br>";
-            if($token == $user_token['code']){
-                echo "TRUE";
-            }
-            else{
-                echo "False";
-            }
-    
+            #$email = $this->input->get('email');
+            #$token = $this->input->get('token');
+            #$user_token = $this->User_model->getUserToken('r.joon1799@gmail.com');
+            #echo var_dump($user_token);
+            #echo "<br>" . $email . "<br>" . $token . "<br>";
+            #if ($token == $user_token['code']) {
+            #    echo "TRUE";
+            #} else {
+            #    echo "False";
+            #}
+
             $this->load->view('auth/templates/header', $data);
             $this->load->view('auth/login');
             $this->load->view('auth/templates/footer');
@@ -45,7 +44,7 @@ class Auth extends CI_Controller
         $password = $this->input->post('password');
 
         $user = $this->User_model->getUserByEmail($email);
-       
+
         if ($user) {
             if ($user['is_active'] == 1) {
                 if (password_verify($password, $user['password'])) {
@@ -145,23 +144,25 @@ class Auth extends CI_Controller
 
         if ($data) {
             $user_token = $this->User_model->getUserToken($email);
+            echo var_dump($user_token);
+            echo "<br>" . $email . "<br>" . $token . "<br>";
             if (password_verify($token, $user_token['code'])) {
                 if (time() - $user_token['created_at'] < 60 * 4) {
                     $this->User_model->activate($email);
                     $this->session->set_flashdata('alert', '<div class="alert alert-success" role="alert">Aktivasi Berhasil, Silahkan Login</div>');
-                    redirect('auth');
+                    #redirect('auth');
                 } else {
                     $this->User_model->deleteUser($email);
                     $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Token kadaluarsa</div>');
-                    redirect('auth');
+                    #redirect('auth');
                 }
             } else {
                 $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Token salah</div>');
-                redirect('auth');
+                #redirect('auth');
             }
         } else {
             $this->session->set_flashdata('alert', '<div class="alert alert-danger" role="alert">Aktivasi gagal, Email salah</div>');
-            redirect('auth');
+            #redirect('auth');
         }
     }
 
