@@ -31,7 +31,7 @@
                 </select>
             </div>
             <div class="form-group col-md-4">
-                <label for="">Klik Simpan Untuk Perubahan</label>
+                <label for="">Klik Simpan Untuk Meyimpan Perubahan</label>
                 <button type="submit" class="btn btn-primary form-control" name="simpan">Simpan</button>
             </div>
         </div>
