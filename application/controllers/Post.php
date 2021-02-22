@@ -39,7 +39,7 @@ class Post extends CI_Controller
         $isi = 'public';
 
         $config['total_rows'] = $this->Post_model->countPosts($parameter, $isi, $data['keyword']);
-        $config['per_page'] = 6;
+        $config['per_page'] = 9;
 
         //styling page
         $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
@@ -86,7 +86,6 @@ class Post extends CI_Controller
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(3);
 
-
         if ($this->session->userdata('keyword') == false) :
             $this->session->set_userdata('keyword', '');
         endif;
@@ -95,9 +94,6 @@ class Post extends CI_Controller
             $this->session->set_userdata('sort', 'id_post');
             $this->session->set_userdata('urutan', 'ASC');
         endif;
-
-        #$data['posts'] = $this->Post_model
-        #    ->getPostsWriter($config['per_page'], $data['start'], $parameter, $isi, $data['keyword']);
 
         $data['posts'] = $this->Post_model
             ->getPostsWriter($config['per_page'], $data['start'], $data['sort'], $data['urutan'], $parameter, $isi, $data['keyword']);
