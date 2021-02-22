@@ -23,7 +23,7 @@
                 <select name="sort" class="form-control">
                     <option selected value="id_post">Berdasarkan</option>
                     <option value="judul">Judul</option>
-                    <option value="fandom">Fandom</option>
+                    <option value="idol">Fandom</option>
                 </select>
 
             </div>

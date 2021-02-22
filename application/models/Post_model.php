@@ -8,7 +8,7 @@ class Post_model extends CI_Model
 
     public function getPostsWriter($sort, $urutan, $parameter, $isi, $keyword = null){
         return $this->db
-        ->select("id_post, judul, SUBSTRING(isi, 1, 140) as isi, status, show, fandom, name")
+        ->select("id_post, judul, SUBSTRING(isi, 1, 140) as isi, status, show, idol, name")
         ->join('users', 'id_writer = id')
         ->like('judul', $keyword)
         ->where($parameter, $isi)
@@ -19,7 +19,7 @@ class Post_model extends CI_Model
 
     public function getPostsWriter2($limit, $start, $sort, $urutan, $parameter, $isi, $keyword = null){
         return $this->db
-        ->select("id_post, judul, SUBSTRING(isi, 1, 140) as isi, status, show, fandom, name")
+        ->select("id_post, judul, SUBSTRING(isi, 1, 140) as isi, status, show, idol, name")
         ->join('users', 'id_writer = id')
         ->like('judul', $keyword)
         ->where($parameter, $isi)

@@ -17,8 +17,8 @@
                             <?= form_error('judul', '<small class="text-danger">', '</small>') ?>
                         </div>
                         <div class="form-group">
-                            <label>Fandom</label>
-                            <input type="text" class="form-control" name="fandom" id="fandom" placeholder="Masukan Idol atau Fandom" value="<?= $post['fandom']; ?>">
+                            <label>Idol</label>
+                            <input type="text" class="form-control" name="idol" id="idol" placeholder="Masukan Idol atau Fandom" value="<?= $post['idol']; ?>">
                             <?= form_error('judul', '<small class="text-danger">', '</small>') ?>
                         </div>
                         <div class="form-group">
