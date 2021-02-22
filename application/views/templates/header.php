@@ -30,6 +30,13 @@
                             <button class="nav-link btn" type="submit" name="submit">Post
                             </button>
                         </form>
+                        <?php if(logged_in()): ?>
+                        <form action="<?= base_url(); ?>private" method="POST" class="form-inline my-2 my-lg-0">
+                            <input type="hidden" value="" name="keyword">
+                            <button class="nav-link btn" type="submit" name="submit">Dashboard
+                            </button>
+                        </form>
+                        <?php endif;?>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="POST" action="">

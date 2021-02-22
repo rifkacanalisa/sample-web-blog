@@ -46,8 +46,14 @@
     <div class="row mt-3">
         <?php if (isset($posts)) : ?>
             <?php foreach ($posts as $p) : ?>
-                
-                <div class="col-md-4 text-white bg-info mb-3">
+                <?php
+                if ($p['status'] == 'private') :
+                    $warna = "text-white bg-dark";
+                else :
+                    $warna = "text-white bg-info";
+                endif;
+                ?>
+                <div class="col-md-4 <?= $warna; ?> mb-3">
                     <div class="card-header">from: <?= $p['idol']; ?></div>
                     <div class="card-body">
                         <h5 class="card-title"><?= $p['judul']; ?></h5>
@@ -58,6 +64,11 @@
                         <?php endif; ?>
                         <br>
                         <a href="<?= base_url(); ?>post/artikel/<?= $p['id_post']; ?>" class="btn btn-secondary">Lihat &raquo;</a>
+                        <?php if (logged_in()) : ?>
+                            <a href="<?= base_url(); ?>post/update/<?= $p['id_post']; ?>" class="btn btn-success">Update</a>
+                            <a href="<?= base_url(); ?>post/hapus/<?= $p['id_post']; ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus post tersebut?')">Hapus</a>
+                            <hr>
+                        <?php endif; ?>
                     </div>
                 </div>
             <?php endforeach; ?>
