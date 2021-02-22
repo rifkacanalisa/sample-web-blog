@@ -22,6 +22,7 @@ class Auth extends CI_Controller
             $token = $this->input->get('token');
             $user_token = $this->User_model->getUserToken('r.joon1799@gmail.com');
             echo var_dump($user_token);
+            echo "<br>".$token."<br>";
             if($token == $user_token['code']){
                 echo "TRUE";
             }
