@@ -1,5 +1,5 @@
 <div class="container">
-    <?php if ($this->session->flashdata('pesan')) : ?>
+    <?php if ($this->session->flashdata('notif')) : ?>
         <div class="row">
             <div class="col-md-4 alert-<?= $this->session->flashdata('alert'); ?> alert">Post
                 <?= $this->session->flashdata('tipe'); ?><?= $this->session->flashdata('notif'); ?></div>
