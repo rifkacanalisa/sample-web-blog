@@ -2,15 +2,7 @@
 
 class Post_model extends CI_Model
 {
-    public function tambahPost(){
-        $data = array(
-            'judul' => $this->input->post('judul'),
-            'isi' => $this->input->post('isi'),
-            'status' => $this->input->post('status'),
-            'show' => $this->input->post('show'),
-            'id_writer' => $this->session->userdata('id_user'),
-            'idol' => $this->input->post('idol')
-        );
+    public function tambahPost($data){
         $this->db->insert('posts',$data);
     }
 

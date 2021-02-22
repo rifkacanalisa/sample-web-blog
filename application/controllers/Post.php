@@ -215,11 +215,19 @@ class Post extends CI_Controller
                 $this->load->view('post/tambah');
                 $this->load->view('templates/footer');
             } else {
-                $this->Post_model->tambahPost();
+                $data = array(
+                    'judul' => $this->input->post('judul'),
+                    'isi' => $this->input->post('isi'),
+                    'status' => $this->input->post('status'),
+                    'show' => $this->input->post('show'),
+                    'id_writer' => $this->session->userdata('id_user'),
+                    'idol' => $this->input->post('idol')
+                );
+                $this->Post_model->tambahPost($data);
                 $this->session->set_flashdata('notif', 'ditambahkan');
                 $this->session->set_flashdata('alert', 'success');
                 $this->session->set_flashdata('tipe', 'berhasil');
-                redirect(base_url('post'));
+                redirect(base_url('private'));
             }
         } else {
             redirect('auth');
@@ -242,7 +250,7 @@ class Post extends CI_Controller
             $this->Post_model->updatePost($id);
             $this->session->set_flashdata('notif', 'Di-update');
             $this->session->set_flashdata('alert', 'secondary');
-            redirect(base_url() . "post");
+            redirect(base_url() . "private");
         }
     }
 
@@ -261,6 +269,6 @@ class Post extends CI_Controller
         $this->Post_model->hapusPost($id);
         $this->session->set_flashdata('notif', 'Dihapus');
         $this->session->set_flashdata('alert', 'danger');
-        redirect(base_url() . "post");
+        redirect(base_url() . "private");
     }
 }
