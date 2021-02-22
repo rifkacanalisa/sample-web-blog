@@ -86,53 +86,53 @@ class Post extends CI_Controller
         //     $this->pagination->initialize($config);
         //     $data['start'] = $this->uri->segment(3);
 
-        //     if ($this->session->userdata('keyword') == false) :
-        //         $this->session->set_userdata('keyword', '');
-        //     endif;
+            if ($this->session->userdata('keyword') == false) :
+                $this->session->set_userdata('keyword', '');
+            endif;
 
-        //     if ($this->session->userdata('sort') == false && $this->session->userdata('urutan') == false) :
-        //         $this->session->set_userdata('sort', 'id_post');
-        //         $this->session->set_userdata('urutan', 'ASC');
-        //     endif;
+            if ($this->session->userdata('sort') == false && $this->session->userdata('urutan') == false) :
+                $this->session->set_userdata('sort', 'id_post');
+                $this->session->set_userdata('urutan', 'ASC');
+            endif;
 
-        //     $data['posts'] = $this->Post_model
-        //         ->getPostsWriter($config['per_page'], $data['start'], $data['sort'], $data['urutan'], $parameter, $isi, $data['keyword']);
+            $data['posts'] = $this->Post_model
+                ->getPostsWriter($data['sort'], $data['urutan'], $parameter, $isi, $data['keyword']);
 
-        //     $this->load->view('templates/header', $data);
-        //     $this->load->view('post/index', $data);
-        //     $this->load->view('templates/footer');
-        // }
+            $this->load->view('templates/header', $data);
+            $this->load->view('post/index', $data);
+            $this->load->view('templates/footer');
+        }
 
-        // public function private()
-        // {
-        //     $data['judul'] = "Halaman Post Pribadi";
+        public function private()
+        {
+            $data['judul'] = "Halaman Post Pribadi";
 
         //     $this->load->library('pagination');
         //     //base_url untuk memberi tahu halaman utamanya dimana
         //     $config['base_url'] = 'https://kpop-sharing.herokuapp.com/private';
 
-        //     if(!logged_in()){
-        //         redirect(base_url());
-        //     }
-        //     if (isset($_POST['submit'])) {
-        //         $data['keyword'] = $this->input->post('keyword');
-        //         $this->session->set_userdata('keyword', $data['keyword']);
-        //     } else {
-        //         $data['keyword'] = $this->session->userdata('keyword');
-        //     }
+            if(!logged_in()){
+                redirect(base_url());
+            }
+            if (isset($_POST['submit'])) {
+                $data['keyword'] = $this->input->post('keyword');
+                $this->session->set_userdata('keyword', $data['keyword']);
+            } else {
+                $data['keyword'] = $this->session->userdata('keyword');
+            }
 
-        //     if (isset($_POST['simpan'])) {
-        //         $data['sort'] = $this->input->post('sort');
-        //         $data['urutan'] = $this->input->post('urutan');
+            if (isset($_POST['simpan'])) {
+                $data['sort'] = $this->input->post('sort');
+                $data['urutan'] = $this->input->post('urutan');
 
-        //         $this->session->set_userdata('sort', $data['sort']);
-        //         $this->session->set_userdata('urutan', $data['urutan']);
-        //     } else {
-        //         $data['sort'] = $this->session->userdata('sort');
-        //         $data['urutan'] = $this->session->userdata('urutan');
-        //     }
-        //     $parameter = 'id_writer';
-        //     $isi = $this->session->userdata('id_user');
+                $this->session->set_userdata('sort', $data['sort']);
+                $this->session->set_userdata('urutan', $data['urutan']);
+            } else {
+                $data['sort'] = $this->session->userdata('sort');
+                $data['urutan'] = $this->session->userdata('urutan');
+            }
+            $parameter = 'id_writer';
+            $isi = $this->session->userdata('id_user');
 
         //     $config['total_rows'] = $this->Post_model->countPosts($parameter, $isi, $data['keyword']);
         //     $config['per_page'] = 9;
